@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pesquisa sobre avaliação de investimentos corporativos</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{colors:{navy:'#0A1F44',steel:'#8D99AE',silver:'#C9CED6',mist:'#EEF1F5'},fontFamily:{serif:['Georgia','Cambria','Times New Roman','serif']}}}}</script>
+<style>
+.hidden{display:none}
+.opt{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem .8rem;border:1px solid #C9CED6;border-radius:.5rem;cursor:pointer;background:#fff;transition:background .15s,border-color .15s}
+.opt:hover{border-color:#0A1F44;background:#F4F7FB}
+.opt:has(input:checked){border-color:#0A1F44;background:#E8EEF8;box-shadow:inset 3px 0 0 #0A1F44}
+.opt input{accent-color:#0A1F44;margin-top:.25rem;flex:none}
+.sc input{position:absolute;opacity:0}
+.sc span{display:grid;place-items:center;min-width:2.7rem;height:2.7rem;padding:0 .4rem;border:1px solid #8D99AE;border-radius:.5rem;background:#fff;cursor:pointer;transition:.15s;font-weight:600}
+.sc:hover span{border-color:#0A1F44;background:#F4F7FB}
+.sc input:checked+span{background:#0A1F44;color:#fff;border-color:#0A1F44}
+.sc input:focus-visible+span,.opt input:focus-visible,.fld:focus-visible{outline:2px solid #0A1F44;outline-offset:2px}
+.fld{width:100%;border:1px solid #8D99AE;border-radius:.5rem;padding:.65rem .8rem;background:#fff}
+fieldset{transition:border-color .2s}
+fieldset.bad{border-color:#b91c1c;background:#fff7f7}
+fieldset.bad .err{display:block}
+.err{display:none}
+#go{transition:transform .2s,box-shadow .2s,background .2s}
+#go:hover{transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(10,31,68,.55);background:#000}
+#go:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="bg-mist text-black antialiased font-sans">
+<div class="fixed top-0 inset-x-0 h-1.5 bg-silver z-50"><div id="bar" class="h-full bg-navy w-0 transition-all duration-300"></div></div>
+
+<header class="bg-navy text-white">
+  <div class="max-w-5xl mx-auto px-5 py-14 md:py-20 grid md:grid-cols-5 gap-10 items-center">
+    <div class="md:col-span-3">
+      <p class="text-silver text-sm mb-4">Pesquisa acadêmica internacional de iniciação científica</p>
+      <h1 class="font-serif text-4xl md:text-5xl leading-tight">Como as organizações decidem onde investir seu dinheiro?</h1>
+      <p class="mt-5 text-lg text-silver max-w-xl">Estudamos quais técnicas de avaliação profissionais de finanças e investimentos usam no dia a dia, e o que leva uma empresa a adotar métodos mais avançados.</p>
+      <dl class="mt-8 grid sm:grid-cols-3 gap-4 text-sm">
+        <div class="border-l-2 border-steel pl-3"><dt class="text-steel">Tempo</dt><dd class="font-semibold">10 a 15 minutos</dd></div>
+        <div class="border-l-2 border-steel pl-3"><dt class="text-steel">Sigilo</dt><dd class="font-semibold">Respostas anônimas e agregadas</dd></div>
+        <div class="border-l-2 border-steel pl-3"><dt class="text-steel">Quem responde</dt><dd class="font-semibold">Quem analisa ou decide investimentos</dd></div>
+      </dl>
+      <a href="#form" class="inline-block mt-9 bg-white text-navy font-semibold px-6 py-3 rounded-lg hover:bg-silver transition">Começar a pesquisa</a>
+    </div>
+    <svg class="md:col-span-2 w-full max-w-sm mx-auto" viewBox="0 0 260 240" fill="none" stroke="#8D99AE" stroke-width="1.5" aria-hidden="true">
+      <path d="M20 120 L90 70 L160 30 L230 10 M90 70 L160 110 L230 90 M20 120 L90 170 L160 130 L230 110 M90 170 L160 210 L230 190 M160 110 L230 110 M160 130 L230 130"/>
+      <g fill="#0A1F44" stroke="#C9CED6"><circle cx="20" cy="120" r="7"/><circle cx="90" cy="70" r="6"/><circle cx="90" cy="170" r="6"/><circle cx="160" cy="30" r="5"/><circle cx="160" cy="110" r="5"/><circle cx="160" cy="130" r="5"/><circle cx="160" cy="210" r="5"/></g>
+      <g fill="#fff" stroke="none"><circle cx="230" cy="10" r="5"/><circle cx="230" cy="90" r="5"/><circle cx="230" cy="110" r="5"/><circle cx="230" cy="130" r="5"/><circle cx="230" cy="190" r="5"/></g>
+    </svg>
+  </div>
+  <div class="h-1.5 bg-gradient-to-r from-silver via-steel to-silver"></div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-10" id="form">
+  <section class="bg-white border border-silver rounded-xl p-6 mb-8 text-[15px] leading-relaxed">
+    <h2 class="font-serif text-xl text-navy mb-2">Prezado(a) participante</h2>
+    <p>Você está sendo convidado(a) a participar de uma pesquisa sobre a utilização de métodos de avaliação de investimentos corporativos. O objetivo é compreender como profissionais envolvidos em decisões de investimento usam diferentes técnicas e identificar fatores individuais, organizacionais e institucionais que influenciam a adoção de métodos avançados.</p>
+    <p class="mt-2">As respostas são confidenciais e analisadas apenas de forma agregada, sem identificar o respondente. Todas as perguntas, exceto as abertas e os campos “Outro”, são obrigatórias.</p>
+  </section>
+
+  <form id="f" novalidate class="space-y-10"></form>
+
+  <section id="inel" class="hidden bg-white border border-steel rounded-xl p-7 mt-8">
+    <h2 class="font-serif text-xl text-navy mb-2">Obrigado pelo seu interesse</h2>
+    <p>Neste momento, o estudo é direcionado a profissionais que participam diretamente da análise, recomendação ou tomada de decisão sobre investimentos corporativos. Agradecemos sua disponibilidade e seu tempo.</p>
+  </section>
+
+  <div id="sub" class="hidden mt-10 text-center">
+    <p id="msg" class="text-red-700 font-medium mb-4 hidden" role="alert"></p>
+    <button id="go" type="button" class="bg-navy text-white font-semibold text-lg px-10 py-4 rounded-lg shadow-lg">Enviar respostas</button>
+  </div>
+
+  <section id="ok" class="hidden bg-white border border-silver rounded-xl p-10 text-center" role="status">
+    <svg class="mx-auto mb-4" width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#0A1F44"/><path d="M19 33l9 9 17-19" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h2 class="font-serif text-3xl text-navy">Enviado com sucesso!</h2>
+    <p class="mt-3 text-lg max-w-md mx-auto">Obrigado por contribuir com a pesquisa. Suas respostas serão tratadas de forma confidencial e analisadas apenas em conjunto.</p>
+    <button onclick="location.reload()" class="mt-6 text-navy underline">Preencher novamente</button>
+  </section>
+</main>
+
+<footer class="bg-black text-silver text-sm text-center py-6 px-4">Pesquisa acadêmica de iniciação científica. Dados tratados de forma confidencial e agregada.</footer>
+
+<script>
+// Cole aqui a URL do Google Apps Script (termina em /exec). Veja o passo a passo.
+const ENDPOINT='https://script.google.com/macros/s/AKfycbx3cd32OL8pdUCEygQ4TTgiC7Xs90PvpJasXS7W1VqqBu86Y2_EZDdt3VikjDiTBiU/exec';
+const L=s=>s.split('|'),$=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const R=(n,t,o,d)=>({n,t,k:'r',o:L(o),d}),C=(n,t,o,d)=>({n,t,k:'c',o:L(o),d}),T=(n,t,ty='text',x={})=>({n,t,k:ty=='a'?'a':'t',ty,...x}),M=(n,t,rows,sc,d)=>({n,t,k:'m',rows:L(rows),sc,d});
+const lk5='1 — Discordo totalmente|2 — Discordo|3 — Nem concordo nem discordo|4 — Concordo|5 — Concordo totalmente|6 — Não sei avaliar';
+const S=[
+{id:'s1',h:'Elegibilidade do respondente',q:[R(1,'Você participa diretamente da análise, recomendação ou tomada de decisão sobre investimentos corporativos em sua organização?','Sim, sou responsável pela tomada de decisão|Sim, elaboro toda a análise que será avaliada pelos tomadores de decisão|Sim, participo com recomendação|Não participo de decisões relacionadas a investimentos corporativos')]},
+{id:'s2',h:'Perfil do respondente e da organização',q:[
+T(2,'Qual é sua idade?','number',{min:16,max:100}),
+R(3,'Qual é sua posição atual na organização?','CEO / Diretor(a)-Presidente|CFO / Diretor(a) Financeiro(a)|Diretor(a) de Investimentos|Controller|Gerente/Coordenador/Supervisor Financeiro|Gerente/Coordenador/Supervisor de Investimentos|Analista Financeiro|Analista de Investimentos|Consultor(a)|Sócio(a) / Proprietário(a)|*Outro'),
+R(4,'Há quanto tempo você trabalha em atividades relacionadas a finanças, investimentos ou avaliação de projetos?','Menos de 2 anos|De 2 a 5 anos|De 6 a 10 anos|De 11 a 15 anos|Mais de 15 anos'),
+R(5,'Qual é o seu maior nível de formação concluído?','Graduação|Especialização / MBA|Mestrado|Doutorado / PhD'),
+R(6,'Qual é sua principal área de formação?','Administração|Economia|Contabilidade|Engenharia|Matemática / Estatística|*Outra'),
+R(7,'Qual é o principal setor de atuação da organização?','Indústria / Manufatura|Serviços|Tecnologia|Serviços financeiros|Energia|Construção / Infraestrutura|Comércio / Varejo|Saúde|Agronegócio|Telecomunicações|Transporte e Logística|*Outro'),
+R(8,'Qual é aproximadamente o porte da organização, em número de empregados?','Microempresa: até 9 empregados|Pequena empresa: 10 a 49 empregados|Média empresa: 50 a 249 empregados|Grande empresa: 250 ou mais empregados'),
+R(9,'Qual é aproximadamente a receita anual da organização?','Até USD 360 mil|De USD 360 mil a USD 4,8 milhões|De USD 4,8 milhões a USD 10 milhões|De USD 10 milhões a USD 50 milhões|De USD 50 milhões a USD 100 milhões|De USD 100 milhões a USD 500 milhões|De USD 500 milhões a USD 1 bilhão|Acima de USD 1 bilhão|Não sei informar|Prefiro não informar','Selecione a faixa que melhor representa a receita anual aproximada.'),
+R(10,'Qual é a natureza da organização?','Empresa privada de capital fechado|Empresa privada de capital aberto|Empresa pública|Sociedade de economia mista|Organização sem fins lucrativos|*Outra'),
+T(11,'Em qual país está localizada a empresa/organização em que você atua?'),
+R(12,'Qual é a abrangência das operações da organização?','Local / Regional|Nacional|Internacional|Multinacional / Global'),
+R(13,'Com que frequência sua organização avalia novos projetos ou investimentos relevantes?','Mensalmente|Trimestralmente|Semestralmente|Anualmente|Esporadicamente, conforme surgem oportunidades'),
+R(14,'Como você classificaria o nível de incerteza enfrentado pela sua organização ao tomar decisões de investimento?','1 — Muito baixo|2 — Baixo|3 — Moderado|4 — Alto|5 — Muito alto'),
+C(15,'Quais são as principais fontes de incerteza enfrentadas nos investimentos da organização?','Mercado|Economia|Taxas de juros|Inflação|Tecnologia|Regulação|Concorrência|Câmbio|Demanda|Custos|Questões políticas|*Outros','Múltiplas respostas.'),
+R(16,'Em que medida o ambiente regulatório e institucional do país influencia as decisões de investimento da organização?','1 — Não influencia|2 — Influencia pouco|3 — Influencia moderadamente|4 — Influencia muito|5 — Influencia extremamente'),
+R(17,'Como são tomadas as principais decisões de investimento na organização?','Principalmente pelo proprietário/sócios|Pela alta administração|Por uma diretoria especializada|Por um comitê de investimentos|Por conselho de administração|Por uma combinação dessas estruturas|*Outra'),
+R(18,'Em que medida sua organização utiliza ferramentas de Inteligência Artificial (IA) no processo de análise e avaliação de investimentos?','Não utiliza IA|Utiliza ocasionalmente, como ferramenta de apoio|Utiliza regularmente em algumas etapas da análise|Utiliza de forma integrada ao processo de avaliação de investimentos|A IA é utilizada como parte relevante do processo de tomada de decisão|Não sei informar'),
+C(19,'Para quais atividades relacionadas à análise de investimentos sua organização utiliza Inteligência Artificial?','Coleta e tratamento de dados|Projeção de receitas, custos ou fluxos de caixa|Identificação e análise de riscos|Análise de cenários|Análise de sensibilidade|Simulações|Avaliação de oportunidades de investimento|Identificação de padrões e tendências de mercado|Apoio à tomada de decisão|Avaliação de Opções Reais|Geração ou interpretação de modelos financeiros|!Não utilizamos IA nessas atividades|*Outro','Múltiplas respostas.')]},
+{id:'s3',h:'Processo de avaliação de investimentos',q:[
+C(20,'Quais técnicas sua organização utiliza na avaliação de investimentos?','Valor Presente Líquido (VPL/NPV)|Taxa Interna de Retorno (TIR/IRR)|Payback Simples|Payback Descontado|Índice de Lucratividade|Taxa de Retorno Contábil|Análise de Sensibilidade|Análise de Cenários|Simulação de Monte Carlo|Árvores de Decisão|Opções Reais|Análise multicritério|*Outros métodos|!Não utilizamos métodos formais de avaliação','Múltiplas respostas. Se você marcar “Opções Reais”, as próximas perguntas serão sobre o uso dessa técnica; caso contrário, sobre as barreiras à sua adoção.'),
+R(21,'Qual técnica exerce maior influência na decisão final sobre um investimento em sua organização?','VPL|TIR|Payback|Análise de Cenários|Simulação de Monte Carlo|Opções Reais|Combinação de diferentes métodos|*Outro|Não existe uma técnica predominante|Não sei informar'),
+R(22,'Além das técnicas quantitativas, qual é a importância de fatores qualitativos na decisão de investimento?','1 — Nenhuma importância|2 — Baixa importância|3 — Moderada importância|4 — Alta importância|5 — Muito alta importância')]},
+{id:'s4a',h:'Respondentes que utilizam Opções Reais',q:[
+R(23,'Há quanto tempo sua organização utiliza, formal ou informalmente, conceitos ou métodos relacionados a Opções Reais?','Menos de 1 ano|De 1 a 3 anos|De 4 a 6 anos|De 7 a 10 anos|Mais de 10 anos'),
+R(24,'Como as Opções Reais são utilizadas em sua organização?','Como método principal de avaliação|Complemento aos métodos tradicionais|Apenas em projetos específicos|De maneira informal, sem modelo matemático estruturado|*Outro'),
+C(25,'Quais tipos de flexibilidade gerencial são considerados na avaliação dos investimentos?','Opção de adiar o investimento|Opção de expandir o projeto|Opção de reduzir a escala|Opção de abandonar o projeto|Opção de interromper temporariamente|Opção de alterar ou adaptar o projeto|Opções de crescimento|Opções sequenciais / compostas|*Outras','Múltiplas respostas.'),
+C(26,'Quais métodos ou modelos são utilizados para avaliar Opções Reais?','Modelo Binomial|Black-Scholes|Árvores de decisão|Simulação de Monte Carlo|Métodos numéricos|Modelos desenvolvidos internamente|Análise qualitativa de flexibilidade, sem modelo matemático formal|!Não sei informar|*Outro','Múltiplas respostas.'),
+R(27,'Com que frequência Opções Reais são utilizadas na avaliação de investimentos?','Em praticamente todos os projetos|Na maioria dos projetos|Apenas em projetos estratégicos|Apenas em projetos de alta incerteza|Raramente'),
+C(28,'Qual sistema, software ou ferramenta sua organização utiliza para realizar análises baseadas em Opções Reais?','Microsoft Excel|Microsoft Excel com modelos ou macros desenvolvidos internamente|Python|R|MATLAB|@RISK ou outro software de simulação|Crystal Ball|Software especializado em avaliação de investimentos|Sistema ERP ou plataforma corporativa integrada|Modelo ou sistema desenvolvido internamente pela organização|Consultoria ou ferramenta externa|!A análise é realizada sem utilização de software específico|*Outro','Múltiplas respostas.'),
+C(29,'Em quais tipos de investimentos as Opções Reais são mais utilizadas?','Expansão de capacidade|Substituição de ativos/equipamentos|Pesquisa e Desenvolvimento (P&D)|Tecnologia e transformação digital|Desenvolvimento de novos produtos|Entrada em novos mercados|Aquisições e fusões|Projetos de infraestrutura|Investimentos internacionais|Exploração de recursos naturais|Projetos de energia|*Outros','Múltiplas respostas.'),
+R(30,'Qual é o horizonte típico dos investimentos avaliados pela organização?','Menos de 1 ano|De 1 a 3 anos|De 3 a 5 anos|De 5 a 10 anos|Mais de 10 anos|Varia significativamente conforme o projeto'),
+C(31,'Em geral, em quais condições sua organização considera mais apropriado utilizar Opções Reais?','Alta incerteza de mercado|Alta incerteza tecnológica|Possibilidade de expansão futura|Possibilidade de abandono|Necessidade de adiar decisões|Elevada volatilidade dos fluxos de caixa|Projetos estratégicos de longo prazo|Ambiente regulatório incerto','Múltiplas respostas.'),
+C(32,'Como os profissionais envolvidos adquiriram conhecimento sobre Opções Reais?','Graduação|Pós-graduação / MBA|Mestrado ou doutorado|Cursos de extensão/capacitação|Treinamento oferecido pela empresa|Experiência profissional|Consultoria externa|Autoaprendizagem|*Outra forma','Múltiplas respostas.')]},
+{id:'s5',h:'Determinantes da adoção de Opções Reais',q:[
+M(33,'Indique seu grau de concordância com as afirmações abaixo:','Os profissionais responsáveis possuem conhecimento técnico suficiente para utilizar Opções Reais|A organização dispõe de dados suficientes para aplicação da técnica|A utilização de Opções Reais melhora a qualidade das decisões|A técnica é compreendida pelos principais tomadores de decisão|A alta administração apoia a utilização de métodos avançados|A organização possui ferramentas tecnológicas adequadas|A cultura organizacional favorece métodos inovadores|O ambiente de negócios apresenta incerteza suficiente para justificar seu uso|Os benefícios da técnica superam seus custos de implementação',5,'1 = Discordo totalmente, 5 = Concordo totalmente')]},
+{id:'s4b',h:'Respondentes que não utilizam Opções Reais',q:[
+R(34,'Antes desta pesquisa, você já conhecia a abordagem de Opções Reais?','Sim, conheço bem|Sim, conheço superficialmente|Já ouvi falar, mas não conheço a técnica|Não conheço'),
+C(35,'Quais são os principais motivos pelos quais sua organização não utiliza Opções Reais?','Falta de conhecimento técnico|Falta de profissionais capacitados|Complexidade matemática|Dificuldade de explicar os resultados aos gestores|Falta de dados adequados|Custo elevado de implementação|Preferência por métodos tradicionais|VPL e outros métodos tradicionais são considerados suficientes|Falta de ferramentas ou softwares adequados|Falta de apoio da alta administração|A técnica não é considerada relevante para nossos projetos|Baixa necessidade de lidar com incerteza|Barreiras culturais ou organizacionais|Não conhecemos aplicações práticas da técnica|*Outros','Múltiplas respostas.'),
+R(36,'Sua organização consideraria utilizar Opções Reais no futuro?','Sim, certamente|Provavelmente sim|Talvez|Provavelmente não|Certamente não'),
+C(37,'Quais fatores poderiam aumentar a probabilidade de sua organização adotar Opções Reais?','Treinamento dos profissionais|Modelos mais simples de aplicação|Softwares ou ferramentas específicas|Maior apoio da alta administração|Evidências de aplicações bem-sucedidas|Maior facilidade de integração com VPL e outros métodos|Maior disponibilidade de dados|Consultoria especializada|*Outro','Múltiplas respostas.'),
+M(38,'Indique seu grau de concordância com as afirmações abaixo, considerando a realidade da sua organização.','Os profissionais envolvidos na avaliação de investimentos possuem conhecimento suficiente sobre métodos avançados de avaliação.|A organização possui dados suficientes para utilizar métodos avançados de avaliação de investimentos.|A organização dispõe de recursos tecnológicos adequados para aplicar métodos avançados de avaliação.|A alta administração apoia a utilização de métodos avançados de avaliação de investimentos.|Os resultados de métodos avançados são compreensíveis para os tomadores de decisão.|A organização está aberta à utilização de novos métodos de avaliação de investimentos.|Os métodos tradicionais de avaliação são considerados suficientes para a maioria dos investimentos da organização.|A complexidade dos métodos avançados dificulta sua utilização.|Os custos de implementação de métodos avançados são uma barreira para sua utilização.|Os investimentos realizados pela organização apresentam elevada incerteza.|Os investimentos realizados pela organização apresentam flexibilidade gerencial relevante.|A utilização de métodos que incorporam flexibilidade pode melhorar a qualidade das decisões de investimento.',6,'1 = Discordo totalmente, 5 = Concordo totalmente, 6 = Não sei avaliar / Não se aplica'),
+T(39,'Na sua opinião, qual é o principal desafio para implementar ou ampliar a utilização de métodos avançados de avaliação de investimentos nas organizações?','a',{o:1}),
+R(40,'Na sua percepção, a utilização de Inteligência Artificial pode facilitar a adoção de métodos avançados de avaliação de investimentos, como Opções Reais?',lk5)]},
+{id:'s6',h:'Considerações finais',q:[T(41,'Gostaria de acrescentar algum comentário sobre a utilização de métodos de avaliação de investimentos ou Opções Reais em sua organização?','a',{o:1})]}
+];
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function opt(name,type,raw){
+  const x=raw[0]=='!',oth=raw[0]=='*',lab=esc(x||oth?raw.slice(1):raw);
+  return `<label class="opt"><input type="${type}" name="${name}" value="${lab}"${x?' data-x':''}><span>${lab}${oth?':':''}</span></label>`+(oth?`<input type="text" data-o name="${name}_o" class="fld hidden -mt-1" placeholder="Especifique" aria-label="Especifique">`:'');
+}
+function fieldHTML(q){
+  let b='';
+  if(q.k=='r'||q.k=='c')b=`<div class="grid gap-2">${q.o.map(o=>opt('q'+q.n,q.k=='r'?'radio':'checkbox',o)).join('')}</div>`;
+  else if(q.k=='t')b=`<input class="fld" name="q${q.n}" type="${q.ty}"${q.min?` min="${q.min}" max="${q.max}" inputmode="numeric"`:''} autocomplete="off">`;
+  else if(q.k=='a')b=`<textarea class="fld" rows="4" name="q${q.n}"></textarea>`;
+  else if(q.k=='m'){
+    const ns=[...Array(q.sc).keys()].map(i=>i+1);
+    b=`<p class="text-sm text-steel mb-1">${q.d}</p>`+q.rows.map((r,i)=>`<div data-row class="py-3 border-t border-silver"><p class="mb-2">${String.fromCharCode(97+i)}. ${esc(r)}</p><div class="flex flex-wrap gap-2">${ns.map(v=>`<label class="sc relative"><input type="radio" name="q${q.n}_${i}" value="${v}"><span>${v==6?'N/A':v}</span></label>`).join('')}</div></div>`).join('');
+  }
+  const d=q.k!='m'&&q.d?`<p class="text-sm text-steel mt-1">${q.d}</p>`:'';
+  return `<fieldset data-n="${q.n}" data-k="${q.k}"${q.o===1&&q.k!='r'&&q.k!='c'?' data-opt="1"':''} class="bg-white border-2 border-silver rounded-xl p-5 md:p-6"><legend class="sr-only">Pergunta ${q.n}</legend><p class="font-semibold text-lg leading-snug"><span class="text-steel font-normal mr-1">${q.n}.</span>${esc(q.t)}</p>${d}<div class="mt-4">${b}</div><p class="err text-red-700 text-sm mt-3">Resposta obrigatória.</p></fieldset>`;
+}
+$('#f').innerHTML=S.map(s=>`<section id="${s.id}" class="${s.id=='s1'?'':'hidden'}"><h2 class="font-serif text-2xl text-navy mb-4 pb-2 border-b-2 border-steel">${s.h}</h2><div class="space-y-5">${s.q.map(fieldHTML).join('')}</div></section>`).join('');
+
+const show=(id,v)=>$('#'+id).classList.toggle('hidden',!v);
+const vis=()=>$$('fieldset[data-n]').filter(f=>!f.closest('.hidden'));
+function ok(f){
+  if(f.dataset.opt)return true;
+  if(f.dataset.k=='m')return $$('[data-row]',f).every(r=>$('input:checked',r));
+  if(f.dataset.k=='r'||f.dataset.k=='c')return !!$('input:checked',f);
+  const i=$('input,textarea',f);return i.value.trim()!==''&&i.checkValidity();
+}
+function upd(){
+  const g=n=>$$(`[name=q${n}]:checked`).map(i=>i.value),q1=g(1)[0],el=!!q1&&!q1.startsWith('Não participo'),a=g(20),ro=a.includes('Opções Reais');
+  ['s2','s3','s6','sub'].forEach(i=>show(i,el));
+  show('s4a',el&&ro);show('s5',el&&ro);show('s4b',el&&a.length>0&&!ro);show('inel',!!q1&&!el);
+  $$('[data-o]').forEach(t=>{t.classList.toggle('hidden',!t.previousElementSibling.querySelector('input').checked)});
+  const v=vis().filter(f=>!f.dataset.opt);$('#bar').style.width=(v.length?100*v.filter(ok).length/v.length:0)+'%';
+}
+$('#f').addEventListener('change',e=>{
+  const i=e.target;
+  if(i.type=='checkbox'&&i.checked)$$(`[name="${i.name}"]`).forEach(x=>{if(x!==i&&(i.hasAttribute('data-x')||x.hasAttribute('data-x')))x.checked=false});
+  i.closest('fieldset')?.classList.remove('bad');upd();
+});
+$('#f').addEventListener('input',e=>{e.target.closest('fieldset')?.classList.remove('bad');upd()});
+const lab={};S.forEach(s=>s.q.forEach(q=>{lab['P'+q.n]=q.t.slice(0,90);if(q.k=='m')q.rows.forEach((r,i)=>lab['P'+q.n+String.fromCharCode(97+i)]=r.slice(0,90))}));
+async function send(rec){
+  if(!ENDPOINT){console.warn('ENDPOINT vazio: respostas não enviadas à planilha.',rec);return true}
+  try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({rec,lab})});return true}
+  catch(e){return false}
+}
+$('#go').addEventListener('click',async()=>{
+  const bad=vis().filter(f=>!ok(f)),m=$('#msg'),btn=$('#go');
+  $$('fieldset.bad').forEach(f=>f.classList.remove('bad'));
+  if(bad.length){
+    bad.forEach(f=>f.classList.add('bad'));
+    m.textContent=`Faltam ${bad.length} pergunta(s) obrigatória(s). Elas estão destacadas em vermelho.`;m.classList.remove('hidden');
+    bad[0].scrollIntoView({behavior:'smooth',block:'center'});return;
+  }
+  m.classList.add('hidden');
+  const rec={};
+  vis().forEach(f=>{const n=f.dataset.n;
+    if(f.dataset.k=='m')$$('[data-row]',f).forEach((r,i)=>{const c=$('input:checked',r);rec['P'+n+String.fromCharCode(97+i)]=c?c.value:''});
+    else rec['P'+n]=$$('input:checked,textarea,input[type=number],input[type=text]',f).filter(i=>i.value&&!i.classList.contains('hidden')).map(i=>i.value).join(' | ');
+  });
+  btn.disabled=true;btn.textContent='Enviando...';btn.classList.add('opacity-70');
+  if(!await send(rec)){
+    m.textContent='Não foi possível enviar. Verifique sua conexão e tente novamente.';m.classList.remove('hidden');
+    btn.disabled=false;btn.textContent='Enviar respostas';btn.classList.remove('opacity-70');return;
+  }
+  ['f','sub','inel'].forEach(i=>$('#'+i).classList.add('hidden'));$('#ok').classList.remove('hidden');$('#bar').style.width='100%';
+  scrollTo({top:0,behavior:'smooth'});
+});
+upd();
+</script>
+</body>
+</html>
